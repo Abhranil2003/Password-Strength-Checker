@@ -1,0 +1,5 @@
+# Requirements for Password Strength Checker
+# Standard library modules like 're' and 'string' are included in Python and do not need installation.
+
+# Testing framework
+unittest
