@@ -18,7 +18,7 @@ def check_password_strength(password, user_name="YourName"):
     min_length = 16
     if len(password) < min_length:
         is_strong = False
-        feedback.append(f"Password should be at least {min_length} characters long.")
+        feedback.append("Password should be at least 16 characters long.")
 
     if not re.search(r'[A-Z]', password):
         is_strong = False
