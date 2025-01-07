@@ -156,7 +156,8 @@ def main():
                             print("Password length must be at least 16. Please try again.")
                             continue
                         strong_password = password_generator(length)
-                        print(f"A strong password has been generated, which is: {strong_password}")
+                        print("A strong password has been generated. Please copy it from the program output.")
+                        print(strong_password)  # Display the password to the user without logging it
                         break
                     except ValueError:
                         print("Invalid input. Please enter a valid number.")
