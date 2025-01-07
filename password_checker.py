@@ -14,7 +14,7 @@ def check_password_strength(password):
     is_strong = True
 
     # Define criteria
-    min_length = 8
+    min_length = 16
     if len(password) < min_length:
         is_strong = False
         feedback.append(f"Password should be at least {min_length} characters long.")
@@ -54,7 +54,7 @@ def main():
     Main function to interact with the user for password analysis.
     """
     print("Welcome to the Password Strength Checker!")
-    print("Enter a password to analyze its strength or type 'exit' to quit.")
+    print("Enter a password with minimum length of 16 to analyze its strength or type 'exit' to quit.")
 
     while True:
         # Take user input
