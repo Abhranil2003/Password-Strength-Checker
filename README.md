@@ -84,6 +84,7 @@ PasswordStrengthChecker/
 ├── password_checker.py       # Core password strength checking functionality
 ├── test_password_checker.py  # Unit tests for the password checker
 ├── requirements.txt          # Dependencies
+├── LICENSE                   # License for the project
 └── README.md                 # Project documentation
 ```
 
