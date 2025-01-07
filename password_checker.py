@@ -1,5 +1,5 @@
 import re
-import random
+import secrets
 import string
 
 def check_password_strength(password, user_name="YourName"):
@@ -115,7 +115,7 @@ def password_generator(length):
         raise ValueError("Password length must be at least 16.")
 
     chars = string.ascii_uppercase + string.ascii_lowercase + string.digits + string.punctuation
-    password = ''.join(random.choice(chars) for _ in range(length))
+    password = ''.join(secrets.choice(chars) for _ in range(length))
     return password
 
 
