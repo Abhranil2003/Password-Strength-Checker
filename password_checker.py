@@ -1,4 +1,6 @@
 import re
+import random
+import string
 
 def check_password_strength(password, user_name="YourName"):
     """
@@ -68,7 +70,6 @@ def check_password_strength(password, user_name="YourName"):
 
     return is_strong, feedback
 
-
 # Custom check functions
 
 def has_sequential_chars(password):
@@ -100,10 +101,27 @@ def contains_user_name(password, user_name):
     """Check if password contains the user's name."""
     return user_name.lower() in password.lower()
 
+def password_generator(length):
+    """
+    Generates a password of the given length with a mix of uppercase letters, lowercase letters, digits, and special characters.
+
+    Args:
+        length (int): The length of the password.
+
+    Returns:
+        str: The generated password.
+    """
+    if length < 16:
+        raise ValueError("Password length must be at least 16.")
+
+    chars = string.ascii_uppercase + string.ascii_lowercase + string.digits + string.punctuation
+    password = ''.join(random.choice(chars) for _ in range(length))
+    return password
+
 
 def main():
     """
-    Main function to interact with the user for password analysis.
+    Main function to interact with the user for password analysis and password generator as per user's choice.
     """
     print("Welcome to the Password Strength Checker!")
     print("Enter a password with minimum length of 16 to analyze its strength or type 'exit' to quit.")
@@ -129,6 +147,22 @@ def main():
             print("2. Password should include at least one uppercase and one lowercase letter.")
             print("3. Password should include at least one digit.")
             print("4. Password should include at least one special character (e.g., @, #, $).")
+            generate = input("\nWould you like the program to generate a strong password for you? (yes/no): ").lower()
+            if generate == 'yes':
+                while True:
+                    try:
+                        length = int(input("Enter the desired length of the password (must be 16 or greater): "))
+                        if length < 16:
+                            print("Password length must be at least 16. Please try again.")
+                            continue
+                        strong_password = password_generator(length)
+                        print(f"Your generated strong password is: {strong_password}")
+                        break
+                    except ValueError:
+                        print("Invalid input. Please enter a valid number.")
+            else:
+                print("Exiting the program. Remember to use strong passwords for better security!")
+                break
 
 
 # Entry point
