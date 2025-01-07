@@ -1,11 +1,12 @@
 import re
 
-def check_password_strength(password):
+def check_password_strength(password, user_name="YourName"):
     """
     Analyzes the strength of a password and provides feedback for improvement.
     
     Parameters:
         password (str): The password to analyze.
+        user_name (str): The user's name to check for in the password (default is "YourName").
         
     Returns:
         tuple: A boolean indicating if the password is strong, and a list of feedback messages.
@@ -44,9 +45,60 @@ def check_password_strength(password):
         is_strong = False
         feedback.append("Password has too many repetitive characters; try adding more variety.")
 
-    # Add more custom checks if needed
+    # Custom Checks
+    if has_sequential_chars(password):
+        is_strong = False
+        feedback.append("Password should not contain sequential characters (e.g., '123', 'abc').")
+
+    if has_repeated_characters(password):
+        is_strong = False
+        feedback.append("Password should not contain excessive repeated characters (e.g., 'aaa', '111').")
+
+    if contains_dictionary_word(password):
+        is_strong = False
+        feedback.append("Password should not contain common dictionary words (e.g., 'password', 'admin').")
+
+    if has_similar_characters(password):
+        is_strong = False
+        feedback.append("Password should avoid visually similar characters (e.g., 'I', 'l', '1').")
+
+    if contains_user_name(password, user_name):
+        is_strong = False
+        feedback.append(f"Password should not contain your name: {user_name}.")
 
     return is_strong, feedback
+
+
+# Custom check functions
+
+def has_sequential_chars(password):
+    """Check for sequential characters."""
+    patterns = ['123', '234', '345', 'abc', 'abcd', 'qwerty']
+    for pattern in patterns:
+        if pattern in password.lower():
+            return True
+    return False
+
+def has_repeated_characters(password):
+    """Check for excessive repeated characters."""
+    return any(password.count(char) > 2 for char in password)
+
+def contains_dictionary_word(password):
+    """Check if password contains any dictionary words."""
+    dictionary_words = ["password", "admin", "123456", "letmein", "qwerty", "welcome", "password123"]
+    for word in dictionary_words:
+        if word in password.lower():
+            return True
+    return False
+
+def has_similar_characters(password):
+    """Check for visually similar characters in the password."""
+    similar_chars = ['I', 'l', '1', 'O', '0', 'Q', 'O']
+    return any(char in similar_chars for char in password)
+
+def contains_user_name(password, user_name):
+    """Check if password contains the user's name."""
+    return user_name.lower() in password.lower()
 
 
 def main():
