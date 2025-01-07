@@ -125,8 +125,10 @@ def main():
             print("✅ Your password is strong!")
         else:
             print("❌ Your password is weak. Here are some suggestions to improve it:")
-            for suggestion in suggestions:
-                print(f"- {suggestion}")
+            print("1. Password should be at least 16 characters long.")
+            print("2. Password should include at least one uppercase and one lowercase letter.")
+            print("3. Password should include at least one digit.")
+            print("4. Password should include at least one special character (e.g., @, #, $).")
 
 
 # Entry point
