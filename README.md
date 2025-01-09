@@ -55,10 +55,16 @@ Example interaction:
 Welcome to the Password Strength Checker!
 Enter a password with minimum length of 16 to analyze its strength or type 'exit' to quit.
 
-Enter your password: Passw0rd
-Password should be at least 16 characters long.
+Enter your password: weakpass
 ❌ Your password is weak. Here are some suggestions to improve it:
+- Password should be at least 16 characters long.
+- Password should include at least one uppercase letter.
 - Password should include at least one special character (e.g., @, #, $).
+
+Would you like the program to generate a strong password for you? (yes/no): yes
+Enter the desired length of the password (must be 16 or greater): 20
+A strong password has been generated. Please copy it from the program output.
+@Gt8!FbnF$2kLm&9qJ4z
 ```
 
 ---
