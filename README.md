@@ -1,4 +1,4 @@
-# Password_Strength_Checker
+# Password Strength Checker
 **Author:** Abhranil Poddar
 
 A Python-based tool to analyze the strength of passwords and provide actionable feedback for improvement. It checks passwords against various criteria to ensure they are secure and hard to guess. Also generates passwords as per users' choice.
